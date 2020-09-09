@@ -40,6 +40,21 @@ const Nav = () => (
                 })
               }
             />
+            <li>
+              <Link to='/'>
+                 Shop
+              </Link>
+            </li>
+            <li>
+              <Link to='/'>
+                 Collections
+              </Link>
+            </li>
+            <li>
+              <Link to='/'>
+                 About
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
