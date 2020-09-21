@@ -3,24 +3,39 @@ import { graphql } from "gatsby"
 
 import ArticlesComponent from "../components/articles"
 import Layout from "../components/layout"
+import Seo from "../components/seo"
 
 export const query = graphql`
-  query Category($id: Int!) {
-    articles: allStrapiArticle(filter: { category: { id: { eq: $id } } }) {
+  query Category($slug: String!) {
+    articles: allStrapiArticle(filter: { status: {eq: "published"}, category: { slug: { eq: $slug } } }) {
       edges {
         node {
-          strapiId
+          slug
           title
           category {
             name
           }
           image {
-            publicURL
+            childImageSharp {
+                fixed(width: 660) {
+                  src
+                }
+            }
+          }
+          user {
+            username
+            image {
+              childImageSharp {
+                  fixed(width: 30, height: 30) {
+                    src
+                  }
+              }
+            }
           }
         }
       }
     }
-    category: strapiCategory(strapiId: { eq: $id }) {
+    category: strapiCategory(slug: { eq: $slug }) {
       name
     }
   }
@@ -32,6 +47,10 @@ const Category = ({ data }) => {
 
   return (
     <Layout>
+    <Seo
+          title={category + " - Strapi Gatsby Blog Starter"}
+          description={category + " on my blog"}
+        />
       <div className="uk-section">
         <div className="uk-container uk-container-large">
           <h1>{category}</h1>

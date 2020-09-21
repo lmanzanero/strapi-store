@@ -11,16 +11,36 @@ const IndexPage = () => (
     <StaticQuery
       query={graphql`
         query {
-          allStrapiArticle {
+          strapiHomepage {
+            Hero {
+              HeroText
+            }
+          }
+          allStrapiArticle(filter: {status: {eq: "published"}}) {
             edges {
               node {
                 strapiId
+                slug
                 title
                 category {
                   name
                 }
                 image {
-                  publicURL
+                  childImageSharp {
+                      fixed(width: 800, height: 500) {
+                      	src
+                      }
+                  }
+                }
+                user {
+                  username
+                  image {
+                    childImageSharp {
+                        fixed(width: 30, height: 30) {
+                        	src
+                        }
+                    }
+                  }
                 }
               }
             }
@@ -30,7 +50,7 @@ const IndexPage = () => (
       render={data => (
         <div className="uk-section">
           <div className="uk-container uk-container-large">
-            <h1>Strapi blog</h1>
+            <h1>{data.strapiHomepage.Hero.HeroText}</h1>
             <ArticlesComponent articles={data.allStrapiArticle.edges} />
           </div>
         </div>

@@ -4,9 +4,13 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: "Gatsby + Strapi Blog",
-    description: "Gatsby blog with Strapi",
-    author: "Strapi team",
+    title: "Strapi Gatsby Blog",
+    titleTemplate: "%s · Unleash content",
+    description:
+      "Strapi Gatsby Blog",
+    url: process.env.API_URL || "http://localhost:1337", // No trailing slash allowed!
+    image: "/uploads/default-image.jpeg", // Path to your image you placed in the 'static' folder
+    twitterUsername: "@you",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -17,15 +21,17 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-plugin-mdx`,
     {
       resolve: "gatsby-source-strapi",
       options: {
         apiURL: process.env.API_URL || "http://localhost:1337",
         contentTypes: [
-          // List of the Content Types you want to be able to request from Gatsby.
           "article",
           "category",
+          "user"
         ],
+        singleTypes: [`Homepage`],
         queryLimit: 1000,
       },
     },
