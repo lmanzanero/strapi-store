@@ -4,11 +4,11 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: "Strapi Gatsby Blog",
+    title: "Strapi Gatsby Blog/Shopping Cart",
     titleTemplate: "%s · Unleash content",
     description:
       "Strapi Gatsby Blog",
-    url: "https://lmanzanero.herokuapp.com", // No trailing slash allowed!
+    url: process.NODE_ENV.API_URL || "https://lmanzanero.herokuapp.com", // No trailing slash allowed!
     image: "/uploads/default-image.jpeg", // Path to your image you placed in the 'static' folder
     twitterUsername: "@you",
   },
@@ -25,7 +25,7 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL:  "https://lmanzanero.herokuapp.com",
+        apiURL: process.NODE_ENV.API_URL || "https://lmanzanero.herokuapp.com",
         contentTypes: [
           "article",
           "category",
