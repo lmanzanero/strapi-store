@@ -1,7 +1,12 @@
-import React from "react"
+import React, { useState, useEffect} from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
+import Modal from "./modal"
+import Cart from "./cart";
 
-const Nav = () => (
+const Nav = () => {
+  const [ isCartModalOpen, setCartModalOpen ] = useState(false);
+
+  return ( 
   <StaticQuery
     query={graphql`
       query {
@@ -20,6 +25,8 @@ const Nav = () => (
         }
       }
     `}
+
+    
     render={data =>
       <div>
         <div>
@@ -48,13 +55,20 @@ const Nav = () => (
                 }
                 </ul>
             </div>
+            <button className="uk-button uk-button-default uk-margin-right" type="button" onClick={() => setCartModalOpen(true)}>Cart <span>🛒</span></button>
             </div>
           </nav>
         </div>
+        <Modal
+          isOpen={isCartModalOpen} 
+          modalHandler={setCartModalOpen}
+        > 
+        <Cart/>
+        
+        </Modal>
       </div>
     }
   />
-
-)
+)}
 
 export default Nav
