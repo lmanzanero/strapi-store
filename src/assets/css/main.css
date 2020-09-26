@@ -78,3 +78,7 @@ img:hover {
   text-decoration: none;
   cursor: pointer;
 }
+
+.cart-btn {
+  background-color: antiquewhite;
+}

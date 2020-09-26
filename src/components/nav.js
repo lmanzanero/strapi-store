@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react"
+import React, { useState } from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
 import Modal from "./modal"
 import Cart from "./cart";
@@ -55,7 +55,7 @@ const Nav = () => {
                 }
                 </ul>
             </div>
-            <button className="uk-button uk-button-default uk-margin-right" type="button" onClick={() => setCartModalOpen(true)}>Cart <span>🛒</span></button>
+            <button className="uk-button uk-button-default uk-margin-right cart-btn" type="button" onClick={() => setCartModalOpen(true)}>Cart <span role="img" aria-label="cart">🛒</span></button>
             </div>
           </nav>
         </div>

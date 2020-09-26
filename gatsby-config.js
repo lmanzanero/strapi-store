@@ -8,7 +8,7 @@ module.exports = {
     titleTemplate: "%s · Unleash content",
     description:
       "Strapi Gatsby Blog",
-    url: process.env.API_URL || "http://localhost:1337", // No trailing slash allowed!
+    url: "https://strapi-gatsby-store-pdyzpqzs3.vercel.app", // No trailing slash allowed!
     image: "/uploads/default-image.jpeg", // Path to your image you placed in the 'static' folder
     twitterUsername: "@you",
   },
@@ -18,14 +18,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/images`
       },
     },
     `gatsby-plugin-mdx`,
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: process.env.API_URL || "http://localhost:1337",
+        apiURL:  "https://lmanzanero.herokuapp.com",
         contentTypes: [
           "article",
           "category",

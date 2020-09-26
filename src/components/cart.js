@@ -1,5 +1,4 @@
-import React from "react" 
-import Modal from "./modal"
+import React from "react"  
 // import { Link } from "gatsby"
 // import Img from "gatsby-image"
 
